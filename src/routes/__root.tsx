@@ -79,21 +79,25 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Workplace AI — Productivity & Career Assistant" },
+      { title: "Dashboard — Workplace AI Assistant" },
       {
         name: "description",
         content:
-          "AI workspace for resumes, emails, meeting notes, planning, research and chat.",
+          "Six AI tools for resumes, emails, meeting notes, planning, research and workplace chat.",
       },
-      { property: "og:title", content: "Workplace AI — Productivity & Career Assistant" },
+      { property: "og:title", content: "Dashboard — Workplace AI Assistant" },
       {
         property: "og:description",
         content:
-          "AI workspace for resumes, emails, meeting notes, planning, research and chat.",
+          "Six AI tools for resumes, emails, meeting notes, planning, research and workplace chat.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:site", content: "@Lovable" },
+      { name: "twitter:title", content: "Dashboard — Workplace AI Assistant" },
+      { name: "twitter:description", content: "Six AI tools for resumes, emails, meeting notes, planning, research and workplace chat." },
+      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/f29c74b9-2f98-4f19-bdf6-83d2539dcd26/id-preview-c945099b--05ba1e0d-0a98-419b-84e6-789f750a9fb4.lovable.app-1786028757364.png" },
+      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/f29c74b9-2f98-4f19-bdf6-83d2539dcd26/id-preview-c945099b--05ba1e0d-0a98-419b-84e6-789f750a9fb4.lovable.app-1786028757364.png" },
     ],
     links: [
       {

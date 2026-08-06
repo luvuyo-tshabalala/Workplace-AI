@@ -55,8 +55,8 @@ export function markdownToHtml(md: string): string {
     const heading = /^(#{1,6})\s+(.*)$/.exec(line);
     if (heading) {
       closeList();
-      const level = Math.min(heading[1].length + 1, 6);
-      out.push(`<h${level}>${inline(heading[2])}</h${level}>`);
+      const level = Math.min((heading[1] ?? "#").length + 1, 6);
+      out.push(`<h${level}>${inline(heading[2] ?? "")}</h${level}>`);
       continue;
     }
     const ul = /^\s*[-*•]\s+(.*)$/.exec(line);
@@ -66,7 +66,7 @@ export function markdownToHtml(md: string): string {
         out.push("<ul>");
         list = "ul";
       }
-      out.push(`<li>${inline(ul[1])}</li>`);
+      out.push(`<li>${inline(ul[1] ?? "")}</li>`);
       continue;
     }
     const ol = /^\s*\d+[.)]\s+(.*)$/.exec(line);
@@ -76,7 +76,7 @@ export function markdownToHtml(md: string): string {
         out.push("<ol>");
         list = "ol";
       }
-      out.push(`<li>${inline(ol[1])}</li>`);
+      out.push(`<li>${inline(ol[1] ?? "")}</li>`);
       continue;
     }
     if (!line.trim()) {

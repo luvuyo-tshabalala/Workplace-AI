@@ -1,80 +1,71 @@
-# AI Career Assistant
+# ⚡ Workplace AI Productivity & Career Assistant
 
-ROLE & GOAL:
-Act as a Principal Full-Stack Engineer and UX Designer. Build a modern, production-grade SaaS web application titled "AI Workplace Productivity & Career Assistant". The application helps professionals, job seekers, and teams automate workplace workflows and optimize career assets using Google Gemini LLM.
+An all-in-one AI-powered SaaS productivity workspace designed to automate repetitive workplace tasks, streamline career assets, and improve decision-making using structured AI prompts and real-time generation.
 
-TECH STACK & INTEGRATIONS:
-- LLM Provider: Google Gemini API (via `@google/genai` or standard REST API endpoints using `gemini-2.5-flash` or `gemini-1.5-pro`).
+---
 
-- Environment Setup: Include an API Key input module in the UI settings or access process.env.VITE_GEMINI_API_KEY with a clean fallback error handler if the key is missing.
+## 📌 Project Overview
 
-- UI Framework: React, Tailwind CSS, Lucide Icons, and standard web APIs for clipboards/downloads.
+Modern knowledge workers and job seekers often spend hours drafting routine communications, parsing unstructured meeting notes, organizing schedules, and tailoring resumes. The **Workplace AI Productivity & Career Assistant** solves these operational bottlenecks by providing specialized, context-aware AI tools in a unified, dual-pane interactive layout.
 
-VISUAL & UI DESIGN (SaaS Aesthetics):
-- Theme: Clean, modern SaaS aesthetic with high-contrast typography, subtle slate/zinc borders. Ensure layout is responsive for both mobile and desktop. Colour scheme should be attractive, user-friendly, and  professional. 
+### Key Objectives
+* **Workplace Automation:** Streamline email drafting, meeting summarization, research analysis, and task scheduling.
+* **Career Acceleration:** Optimize resumes for Applicant Tracking Systems (ATS) with structured formatting and keyword alignment.
+* **Responsible AI & Human-in-the-Loop:** Ensure all generated outputs render inside editable text containers with ethical disclaimers and multi-format export options.
 
-- Layout Architecture: 
-  - Left Sidebar Navigation: Fixed-width collapsible sidebar with active-state indicators and module icons.
+---
 
-  - Main Workspace: Dual-pane layout featuring an Input/Config Panel on the left and a Live Interactive Preview Pane on the right.
+## ✨ Features Implemented
 
-MODULES TO BUILD (6 Core Tools):
-Build a dedicated view and system prompt pipeline for each of the following 6 tools:
+1. **📄 ATS Resume Optimizer:** Rewrites and structures resumes for optimal parsing by Applicant Tracking Systems, outputting clean, single-column sections and keyword alignment.
+2. **✉️ Smart Email Generator:** Context-aware email generator supporting tone adjustments (*Formal, Informal, Persuasive*) and target audience selection (*Manager, Client, Team*).
+3. **📝 Meeting Notes Summarizer:** Converts unstructured transcripts into an Executive Summary, Key Decisions, and an Action Items Table (*Task, Assignee, Deadline*).
+4. **📅 AI Task Planner & Agenda Builder:** Prioritizes tasks using the Eisenhower Matrix (*Urgent vs. Important*) and generates structured time-blocked schedules.
+5. **🔍 AI Research Assistant:** Synthesizes dense topics, articles, or reports into executive summaries and structured key takeaways.
+6. **💬 Interactive AI Chatbot Interface:** Real-time, streaming conversational workplace assistant powered by Server-Sent Events (SSE).
 
-1. ATS Resume Optimization & Builder (NEW):
-   - Inputs: Current Resume Text, Target Job Title, Target Job Description, and Skill Highlights.
+---
 
-   - Gemini Task: Analyze the job description for target keywords and reformat/rewrite the resume into an ATS-friendly, single-column plain structure.
+## 🛠️ Technologies & Tools Used
 
-   - Output Sections: ATS Compliance Rating score (0-100%), Professional Summary, Core Competencies (bulleted), and Work Experience (quantified bullet points).
+* **Frontend Framework:** React with Vite & TypeScript
+* **Routing & Layout:** TanStack Router (File-based routing)
+* **Styling & UI:** Tailwind CSS, Lucide Icons, Shadcn UI primitives
+* **LLM Engine:** Google Gemini (`google/gemini-2.5-flash`)
+* **API Architecture:** Server-side gateway proxy (JSON + SSE for chat streaming)
+* **Build & Deployment:** Lovable.ai platform integration
 
-2. ✉️ Smart Email Generator:
-   - Inputs: Context/Key Details, Tone dropdown (Formal, Informal, Persuasive), Target Audience dropdown (Manager, Client, Team).
-   - Gemini Task: Draft structured email with Subject Line, Salutation, Body, and Sign-off.
+---
 
-3. 📝 Meeting Notes Summarizer:
-   - Inputs: Raw meeting transcript or unstructured notes.
-   - Gemini Task: Extract Executive Summary, Key Decisions, and an Action Items Table (Task, Assignee, Deadline).
+## 🔒 Security & Architecture Note
 
-4. 📅 AI Task Planner & Agenda Builder:
-   - Inputs: Unstructured work goals, Timeframe selector (Daily/Weekly).
-   - Gemini Task: Prioritize tasks using the Eisenhower Matrix (Urgent vs Important) and generate an hour-by-hour time-blocked schedule.
+> **Server-Side AI Gateway:** All AI calls are securely processed server-side through Lovable's proxy gateway (`google/gemini-2.5-flash`). **No API keys are exposed to the client**, and no user API key input is required.
 
-5. 🔍 AI Research Assistant:
-   - Inputs: Long-form article text, report, or topic.
-   - Gemini Task: Extract key takeaways, core recommendations, and a 3-bullet executive summary.
+---
 
-6. 💬 Interactive AI Chatbot Interface:
-   - Interactive workplace assistant chat supporting streaming/conversational responses via Gemini API, message history UI, and suggested quick-prompt chips.
+## 📁 Repository File Structure
 
-KEY TECHNICAL & UX REQUIREMENTS:
-- Editable Output Preview: All AI outputs MUST render inside an inline rich-text/content-editable container allowing direct manual user edits before copying or exporting.
-
-- One-Click Export & Action Bar: Add buttons for "Copy to Clipboard" (with toast notification) and " Export" (.txt and text-formatted file options).
-
-- UI State Management: Fully handle 5 explicit states: Idle, Loading (animated skeleton screens and spinners), Success, Error (toast/alert banner with retry button), and Validation (highlighting missing inputs).
-
-- Responsible AI Safeguard: Display a visible amber disclaimer banner below every AI generation: "AI-generated content may contain inaccuracies. Please review, edit, and verify all details prior to export."
-
-- Design: Ensure that the application has a dashboard, displaying shortcuts to the AI Tools.
-
-This project was built with [Lovable](https://lovable.dev).
-
-## Build with Lovable
-
-Continue developing this project in the [Lovable editor](https://lovable.dev/projects/05ba1e0d-0a98-419b-84e6-789f750a9fb4).
-
-- **Ship faster**: describe what you want to build and Lovable handles the code.
-- **Stay in sync**: every change made in Lovable is committed straight to this repository.
-- **Full ownership**: this code is yours. Push to `main` on GitHub and your changes sync back into Lovable, ready for your next prompt.
-
-## Development
-
-Prefer working locally? You need Node.js and npm — [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating).
-
-```sh
-git clone <this-repository-url>
-cd <repository-name>
-npm i
-npm run dev
-```
+```text
+src/
+├── routes/
+│   ├── __root.tsx            # Global layout, persistent sidebar, and providers
+│   ├── index.tsx             # Main Dashboard Home
+│   ├── resume.tsx            # ATS Resume Optimizer module
+│   ├── email.tsx             # Smart Email Generator module
+│   ├── notes.tsx             # Meeting Notes Summarizer module
+│   ├── planner.tsx           # AI Task Planner module
+│   ├── research.tsx          # AI Research Assistant module
+│   ├── chat.tsx              # Interactive AI Chatbot (SSE streaming)
+│   └── api/generate.ts       # Server-side Gemini proxy endpoint (JSON + SSE)
+├── components/app/
+│   ├── AppSidebar.tsx        # Navigation sidebar component
+│   ├── ToolShell.tsx         # Dual-pane input/output workspace shell
+│   └── OutputPane.tsx        # Content-editable preview, copy, .txt/.md export, disclaimer banner
+├── hooks/
+│   └── use-generation.ts     # Unified management for Idle, Loading, Success, and Error states
+├── lib/
+│   ├── ai-client.ts          # Client API caller functions (generate() & streamChat())
+│   ├── tools.ts              # Tool configuration & metadata
+│   └── markdown.ts           # Client-side Markdown-to-HTML parsing utility
+├── styles.css                # Design tokens, variables, and global themes
+└── router.tsx                # Application router entry point

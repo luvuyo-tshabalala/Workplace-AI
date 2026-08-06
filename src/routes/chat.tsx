@@ -87,9 +87,16 @@ function ChatPage() {
   };
 
   const retry = () => {
-    const lastUser = [...messages].reverse().find((m) => m.role === "user");
+    let index = -1;
+    for (let i = messages.length - 1; i >= 0; i -= 1) {
+      if (messages[i]?.role === "user") {
+        index = i;
+        break;
+      }
+    }
+    const lastUser = index >= 0 ? messages[index] : undefined;
     if (lastUser) {
-      setMessages((prev) => prev.slice(0, prev.findLastIndex((m) => m.role === "user")));
+      setMessages(messages.slice(0, index));
       void send(lastUser.content);
     }
   };

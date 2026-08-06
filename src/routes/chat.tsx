@@ -53,13 +53,13 @@ function ChatPage() {
     bottomRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages, busy]);
 
-  const send = async (text: string) => {
+  const send = async (text: string, base?: ChatMessage[]) => {
     const content = text.trim();
     if (!content) {
       toast.error("Type a message first");
       return;
     }
-    const history: ChatMessage[] = [...messages, { role: "user", content }];
+    const history: ChatMessage[] = [...(base ?? messages), { role: "user", content }];
     setMessages([...history, { role: "assistant", content: "" }]);
     setInput("");
     setBusy(true);
@@ -96,8 +96,7 @@ function ChatPage() {
     }
     const lastUser = index >= 0 ? messages[index] : undefined;
     if (lastUser) {
-      setMessages(messages.slice(0, index));
-      void send(lastUser.content);
+      void send(lastUser.content, messages.slice(0, index));
     }
   };
 

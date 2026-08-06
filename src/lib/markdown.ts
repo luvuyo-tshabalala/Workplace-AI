@@ -23,7 +23,8 @@ export function markdownToHtml(md: string): string {
   };
   const flushTable = () => {
     if (!table.length) return;
-    const [head, ...body] = table;
+    const head = table[0] ?? [];
+    const body = table.slice(1);
     out.push('<table class="ai-table"><thead><tr>');
     head.forEach((c) => out.push(`<th>${inline(c)}</th>`));
     out.push("</tr></thead><tbody>");

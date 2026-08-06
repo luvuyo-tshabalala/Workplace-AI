@@ -50,9 +50,9 @@ function ResumePage() {
 
   const submit = () => {
     const next: Record<string, string> = {};
-    if (!resume.trim()) next.resume = "Paste your current resume text.";
-    if (!title.trim()) next.title = "Add the target job title.";
-    if (!jd.trim()) next.jd = "Paste the target job description.";
+    if (!resume.trim()) next["resume"] = "Paste your current resume text.";
+    if (!title.trim()) next["title"] = "Add the target job title.";
+    if (!jd.trim()) next["jd"] = "Paste the target job description.";
     setErrors(next);
     if (Object.keys(next).length) return;
     void run(
